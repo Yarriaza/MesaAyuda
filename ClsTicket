@@ -1,0 +1,93 @@
+package modelo;
+
+import controlador.ClsDatosTicket;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ * @author Yarri
+ */
+public class ClsTicket {
+
+    private Conexion con = new Conexion();
+    private Connection cn = con.conexion();
+
+    public int InsertarTicket(ClsDatosTicket dts) {
+        try {
+            CallableStatement csta = cn.prepareCall("{call Mantencion_Ticket(?,?,?,?,?,?,?,?,?,?,?)}");
+            csta.setString(1, dts.getRutCliente());
+            csta.setString(2, dts.getNombreCliente());
+            csta.setString(3, dts.getTelefonoCliente());
+            csta.setString(4, dts.getEmailCliente());
+            csta.setString(5, dts.getDireccionCliente());
+            csta.setInt(6, dts.getCodigoEjecutivo());
+            csta.setInt(7, dts.getCodigoArea());
+            csta.setInt(8, dts.getCodigoTipo());
+            csta.setInt(9, dts.getCodigoCriticidad());
+            csta.setString(10, dts.getDetalleServicio());
+            csta.setString(11, dts.getDetalleProblema());
+
+            ResultSet rs = csta.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("num_ticket");
+                //JOptionPane.showMessageDialog(null, "Ticket guardado");  
+            } else {
+                return 0;
+            }
+
+        } catch (Exception e) {
+            return 0;
+//            JOptionPane.showMessageDialog(null, "Ticket no guardado");
+        }
+    }
+
+    public DefaultTableModel Previsualizar(int NumTicket) {
+        CallableStatement csta;
+        //cramos la tabla
+        DefaultTableModel tbl_DatosTicket;
+        //Titulos para ña tabla array de string con nobres
+        String [] titulos = {"rut","nombre","telefono","email","direccion","codigo","ejecutivo","area","tipo","criticidad","servicio","problema"};
+        //array que guardara los datos que vienen de la bbdd
+        String[] arrDatosTicket = new String[12];               
+        //asignamos los titulos
+        tbl_DatosTicket = new DefaultTableModel(null, titulos);
+        
+        try {
+            
+            csta = cn.prepareCall("{call Trae_info_visualizacion (?)}");
+            //csta.setInt(1, NumTicket);
+            csta.setInt(1, 1140);
+            
+            ResultSet rs = csta.executeQuery();
+
+            while (rs.next()) {
+                arrDatosTicket[0] = rs.getString("rutCliente");
+                arrDatosTicket[1] = rs.getString("nombreCliente");
+                arrDatosTicket[2] = rs.getString("telefonoCliente");
+                arrDatosTicket[3] = rs.getString("emailCliente");
+                arrDatosTicket[4] = rs.getString("direccionCliente");
+                arrDatosTicket[5] = rs.getString("codigoticket");
+                arrDatosTicket[6] = rs.getString("nombreEjecutivo");
+                arrDatosTicket[7] = rs.getString("nombreArea");
+                arrDatosTicket[8] = rs.getString("detalleTipo");
+                arrDatosTicket[9] = rs.getString("detalleCriticidad");
+                arrDatosTicket[10] = rs.getString("detalleServicio");
+                arrDatosTicket[11] = rs.getString("detalleProblema");
+
+                tbl_DatosTicket.addRow(arrDatosTicket);
+            }
+            return tbl_DatosTicket;
+
+        } catch (SQLException ex) {
+            return null;
+
+        }
+
+    }
+
+}
