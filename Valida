@@ -1,0 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controlador;
+
+import modelo.ClsTicket;
+import vistas.NuevoTicket;
+
+/**
+ *
+ * @author Yarri
+ */
+public class ValidaForm {
+
+// valida que los datos ingresados en el inicio de sesion no sean vacios.
+   public boolean validaIngresoTicket(ClsDatosTicket dts){
+       
+        if (dts.getRutCliente().isEmpty() || dts.getNombreCliente().isEmpty()||
+            dts.getTelefonoCliente().isEmpty() || dts.getEmailCliente().isEmpty() || 
+            dts.getDireccionCliente().isEmpty()) {
+            return false;
+        }
+        else{
+            return true;  
+        }
+   } 
+    
+}
