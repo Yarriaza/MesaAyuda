@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+import controlador.ClsDatosTicket;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Yarri
+ */
+public class ClsClientes {
+    
+       private Conexion con = new Conexion();    
+       private Connection cn = con.conexion();
+    
+      public ResultSet ConsultarRutCliente(ClsDatosTicket dts){
+        try {
+            CallableStatement csta = cn.prepareCall("{call TRAE_INFO_CLIENTE(?)}");
+            csta.setString(1,dts.getRutCliente() );
+                     
+           ResultSet rs = csta.executeQuery();
+            
+           if(rs.next()){
+                return rs; 
+           }else {
+                return null;
+           }
+              
+           
+        }catch (Exception e ){
+            JOptionPane.showMessageDialog(null, "Ticket no guardado");
+            return null;
+        }
+    }
+      
+}
