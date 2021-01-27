@@ -1,0 +1,39 @@
+
+package controlador;
+
+//usuarios para ingresar 
+// usuario : ejecutivo contraseña: ejecutivo
+// usuario : jefemesa contraseña: jefe 
+public class ClsDatosUsuarios {
+    private String usuario; 
+    private String contraseña; 
+    
+
+    public ClsDatosUsuarios(){
+        
+    }
+    
+    public ClsDatosUsuarios(String Usuario, String Contraseña) {
+        this.usuario = Usuario;
+        this.contraseña = Contraseña;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.usuario = Usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.contraseña = Contraseña;
+    }
+   
+   
+}
+
