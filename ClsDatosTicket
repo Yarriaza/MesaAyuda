@@ -1,0 +1,140 @@
+
+package controlador;
+
+
+public class ClsDatosTicket {
+    
+    //datos clientes
+    private String rutCliente; 
+    private String nombreCliente;
+    private String telefonoCliente; 
+    private String emailCliente;
+    private String direccionCliente;
+    
+    //datos ticket
+    private int codigoEjecutivo;
+    private int codigoArea;
+    private int codigoTipo;
+    private int codigoCriticidad;
+    private String detalleServicio;
+    private String detalleProblema;
+    private int codigoTicket;
+    
+    
+    public ClsDatosTicket(){
+        
+    }
+
+    public ClsDatosTicket(String rutCliente, String nombreCliente, String telefonoCliente, String emailCliente, String direccionCliente, int codigoEjecutivo, int codigoArea, int codigoTipo, int codigoCriticidad, String detalleServicio, String detalleProblema, int codigoTicket) {
+        this.rutCliente = rutCliente;
+        this.nombreCliente = nombreCliente;
+        this.telefonoCliente = telefonoCliente;
+        this.emailCliente = emailCliente;
+        this.direccionCliente = direccionCliente;
+        this.codigoEjecutivo = codigoEjecutivo;
+        this.codigoArea = codigoArea;
+        this.codigoTipo = codigoTipo;
+        this.codigoCriticidad = codigoCriticidad;
+        this.detalleServicio = detalleServicio;
+        this.detalleProblema = detalleProblema;
+        this.codigoTicket = codigoTicket;
+    }
+
+    public String getRutCliente() {
+        return rutCliente;
+    }
+
+    public void setRutCliente(String rutCliente) {
+        this.rutCliente = rutCliente;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public String getTelefonoCliente() {
+        return telefonoCliente;
+    }
+
+    public void setTelefonoCliente(String telefonoCliente) {
+        this.telefonoCliente = telefonoCliente;
+    }
+
+    public String getEmailCliente() {
+        return emailCliente;
+    }
+
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
+    }
+
+    public String getDireccionCliente() {
+        return direccionCliente;
+    }
+
+    public void setDireccionCliente(String direccionCliente) {
+        this.direccionCliente = direccionCliente;
+    }
+
+    public int getCodigoEjecutivo() {
+        return codigoEjecutivo;
+    }
+
+    public void setCodigoEjecutivo(int codigoEjecutivo) {
+        this.codigoEjecutivo = codigoEjecutivo;
+    }
+
+    public int getCodigoArea() {
+        return codigoArea;
+    }
+
+    public void setCodigoArea(int codigoArea) {
+        this.codigoArea = codigoArea;
+    }
+
+    public int getCodigoTipo() {
+        return codigoTipo;
+    }
+
+    public void setCodigoTipo(int codigoTipo) {
+        this.codigoTipo = codigoTipo;
+    }
+
+    public int getCodigoCriticidad() {
+        return codigoCriticidad;
+    }
+
+    public void setCodigoCriticidad(int codigoCriticidad) {
+        this.codigoCriticidad = codigoCriticidad;
+    }
+
+    public String getDetalleServicio() {
+        return detalleServicio;
+    }
+
+    public void setDetalleServicio(String detalleServicio) {
+        this.detalleServicio = detalleServicio;
+    }
+
+    public String getDetalleProblema() {
+        return detalleProblema;
+    }
+
+    public void setDetalleProblema(String detalleProblema) {
+        this.detalleProblema = detalleProblema;
+    }
+
+    public int getCodigoTicket() {
+        return codigoTicket;
+    }
+
+    public void setCodigoTicket(int codigoTicket) {
+        this.codigoTicket = codigoTicket;
+    }
+ 
+    
+}
